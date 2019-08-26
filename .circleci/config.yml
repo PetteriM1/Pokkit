@@ -21,7 +21,7 @@ jobs:
             - ~/.m2
           key: Pokkit-{{ checksum "pom.xml" }}
       
-      - run: mvn clean install
+      - run: mvn clean install test
 
       - store_artifacts:
           path: target/Pokkit-0.8.1.jar
