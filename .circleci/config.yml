@@ -5,7 +5,7 @@ jobs:
     working_directory: ~/Pokkit
 
     docker:
-      - image: circleci/openjdk:8-jdk-browsers
+      - image: circleci/openjdk:9-jdk-browsers
 
     steps:
 
