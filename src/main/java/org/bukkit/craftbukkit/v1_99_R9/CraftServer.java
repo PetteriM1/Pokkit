@@ -61,6 +61,7 @@ import org.bukkit.util.CachedServerIcon;
 import net.md_5.bungee.api.chat.BaseComponent;
 
 import nl.rutgerkok.pokkit.blockdata.PokkitBlockData;
+import nl.rutgerkok.pokkit.boss.PokkitBossBar;
 import nl.rutgerkok.pokkit.command.PokkitCommandFetcher;
 import nl.rutgerkok.pokkit.command.PokkitCommandSender;
 import nl.rutgerkok.pokkit.enchantment.PokkitEnchantment;
@@ -204,7 +205,7 @@ public final class CraftServer extends Server.Spigot implements Server {
 
 	@Override
 	public BossBar createBossBar(String arg0, BarColor arg1, BarStyle arg2, BarFlag... arg3) {
-		throw Pokkit.unsupported();
+		return new PokkitBossBar(arg0, arg1, arg2, arg3);
 	}
 
 	@Override
