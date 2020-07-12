@@ -154,6 +154,7 @@ public class PokkitBossBar implements BossBar {
 	public void removeAll() {
 		for(int i = 0; i < dummyBossBars.size(); i++)
 		{
+			dummyBossBars.get(i).destroy();
 			dummyBossBars.remove(i);
 		}
 	}
