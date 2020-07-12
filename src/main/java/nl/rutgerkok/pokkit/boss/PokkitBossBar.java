@@ -3,7 +3,6 @@ package nl.rutgerkok.pokkit.boss;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
@@ -30,10 +29,6 @@ public class PokkitBossBar implements BossBar {
 		{
 			addFlag(arg3[i]);
 		}*/
-		Bukkit.getOnlinePlayers().forEach((player) -> {
-			//addPlayer(player);
-		});
-		//cn.nukkit.utils.DummyBossBar bossBar = new Builder
 	}
 
 	@Override
@@ -144,6 +139,7 @@ public class PokkitBossBar implements BossBar {
 		{
 			if(dummyBossBars.get(i).getPlayer().equals(PokkitPlayer.toNukkit(player)))
 			{
+				dummyBossBars.get(i).destroy();
 				dummyBossBars.remove(i);
 				i = dummyBossBars.size();
 			}
