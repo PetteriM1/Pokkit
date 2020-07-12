@@ -117,7 +117,7 @@ public class PokkitBossBar implements BossBar {
 	public void setProgress(double progress) {
 		for(int i = 0; i < dummyBossBars.size(); i++)
 		{
-			dummyBossBars.get(i).setLength((float) progress);
+			dummyBossBars.get(i).setLength((float) progress*100);
 		}
 		progressLength = (float) progress;
 	}
