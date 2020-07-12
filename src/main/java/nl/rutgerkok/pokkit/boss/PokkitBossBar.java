@@ -25,11 +25,11 @@ public class PokkitBossBar implements BossBar {
 	public PokkitBossBar(String arg0, BarColor arg1, BarStyle arg2, BarFlag[] arg3) {
 		setTitle(arg0);
 		setColor(arg1);
-		setStyle(arg2);
+		/*setStyle(arg2);
 		for(int i = 0; i < arg3.length; i++)
 		{
 			addFlag(arg3[i]);
-		}
+		}*/
 		Bukkit.getOnlinePlayers().forEach((player) -> {
 			//addPlayer(player);
 		});
@@ -90,27 +90,27 @@ public class PokkitBossBar implements BossBar {
 
 	@Override
 	public BarStyle getStyle() {
-		// TODO Auto-generated method stub
-		return null;
+		throw Pokkit.unsupported();
 	}
 
 	@Override
 	public void setStyle(BarStyle style) {
-		// TODO Auto-generated method stub
-		
+		throw Pokkit.unsupported();		
 	}
 
 	@Override
 	public void removeFlag(BarFlag flag) {		
+		throw Pokkit.unsupported();
 	}
 
 	@Override
-	public void addFlag(BarFlag flag) {		
+	public void addFlag(BarFlag flag) {	
+		throw Pokkit.unsupported();
 	}
 
 	@Override
 	public boolean hasFlag(BarFlag flag) {
-		return false;
+		throw Pokkit.unsupported();
 	}
 
 	@Override
@@ -176,8 +176,7 @@ public class PokkitBossBar implements BossBar {
 
 	@Override
 	public boolean isVisible() {
-		// TODO Auto-generated method stub
-		return false;
+		throw Pokkit.unsupported();
 	}
 
 	@Override
