@@ -10,6 +10,7 @@ import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 
 import cn.nukkit.utils.BlockColor;
+import cn.nukkit.utils.BossBarColor;
 import cn.nukkit.utils.DummyBossBar;
 import nl.rutgerkok.pokkit.Pokkit;
 import nl.rutgerkok.pokkit.player.PokkitPlayer;
@@ -50,32 +51,31 @@ public class PokkitBossBar implements BossBar {
 		return color;
 	}
 	
-	public BlockColor BarColorToBlockColor(BarColor color)
-	{
+	public BossBarColor BarColorToBossBarColor(BarColor color) {
 		switch(color)
 		{
 		case BLUE:
-			return BlockColor.BLUE_BLOCK_COLOR; 
+			return BossBarColor.BLUE; 
 		case GREEN:
-			return BlockColor.GREEN_BLOCK_COLOR;
+			return BossBarColor.GREEN;
 		case PINK:
-			return BlockColor.PINK_BLOCK_COLOR;
+			return BossBarColor.PINK;
 		case RED:
-			return BlockColor.RED_BLOCK_COLOR;
+			return BossBarColor.RED;
 		case WHITE:
-			return BlockColor.WHITE_BLOCK_COLOR;
+			return BossBarColor.WHITE;
 		case YELLOW:
-			return BlockColor.YELLOW_BLOCK_COLOR;
+			return BossBarColor.YELLOW;
 		case PURPLE:
 		default:
-			return BlockColor.PURPLE_BLOCK_COLOR;
+			return BossBarColor.PURPLE;
 		}
 	}
 
 	@Override
 	public void setColor(BarColor color) {
 		this.color = color;
-		BlockColor bcolor = BarColorToBlockColor(color);
+		BossBarColor bcolor = BarColorToBossBarColor(color);
 
 		for(int i = 0; i < dummyBossBars.size(); i++)
 		{
@@ -125,7 +125,7 @@ public class PokkitBossBar implements BossBar {
 	@Override
 	public void addPlayer(Player player) {
 		DummyBossBar build = new DummyBossBar.Builder(PokkitPlayer.toNukkit(player))
-				.color(BarColorToBlockColor(getColor()))
+				.color(BarColorToBossBarColor(getColor()))
 				.text(getTitle())
 				.length((float) getProgress())
 				.build();
