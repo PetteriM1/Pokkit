@@ -93,7 +93,7 @@ public class PokkitBlockData implements BlockData {
 
 	@Override
 	public Material getMaterial() {
-		return BlockMap.getMaterial(block.getId());
+		return BlockMap.getMaterial(block.getId(), block.getDamage());
 	}
 
 	public byte getNukkitData() {
@@ -134,7 +134,7 @@ public class PokkitBlockData implements BlockData {
 	 */
 	@Deprecated
 	public org.bukkit.material.MaterialData toMaterialData() {
-		Material material = BlockMap.getMaterial(block.getId());
+		Material material = BlockMap.getMaterial(block.getId(), block.getDamage());
 		return material.getNewData((byte) block.getDamage());
 	}
 }

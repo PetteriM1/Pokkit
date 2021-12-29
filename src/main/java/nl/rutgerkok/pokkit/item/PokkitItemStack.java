@@ -65,7 +65,7 @@ public final class PokkitItemStack {
 	public static ItemStack toBukkitCopy(cn.nukkit.item.Item nukkit) {
 		Material material = ItemMap.fromNukkitOrNull(nukkit);
 		if (material == null) {
-			material = nl.rutgerkok.pokkit.blockdata.BlockMap.getMaterialOrNull(nukkit.getId());
+			material = nl.rutgerkok.pokkit.blockdata.BlockMap.getMaterialOrNull(nukkit.getId(), nukkit.getDamage());
 			if (material == null) {
 				Server.getInstance().getLogger().info("[Pokkit|Debug] toBukkitCopy null for " + (nukkit == null ? "null" : nukkit.getId()));
 				return null;
