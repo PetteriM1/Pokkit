@@ -23,6 +23,7 @@ import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
 import nl.rutgerkok.pokkit.Pokkit;
+import nl.rutgerkok.pokkit.attribute.PokkitAttributeInstance;
 import nl.rutgerkok.pokkit.blockdata.PokkitBlockData;
 import nl.rutgerkok.pokkit.player.PokkitPlayer;
 import nl.rutgerkok.pokkit.potion.PokkitPotionEffect;
@@ -96,7 +97,10 @@ public class PokkitLivingEntity extends PokkitEntity implements LivingEntity {
 
 	@Override
 	public AttributeInstance getAttribute(Attribute attribute) {
-		throw Pokkit.unsupported();
+		cn.nukkit.entity.Attribute.init();
+		int nukkitAttributeType = PokkitAttributeInstance.fromBukkit(attribute);
+		cn.nukkit.entity.Attribute nukkitAttribute = cn.nukkit.entity.Attribute.getAttribute(nukkitAttributeType);
+		return new PokkitAttributeInstance(nukkitAttribute);
 	}
 
 	@Override

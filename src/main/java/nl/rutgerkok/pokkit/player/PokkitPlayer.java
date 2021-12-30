@@ -363,8 +363,7 @@ public class PokkitPlayer extends PokkitHumanEntity implements Player {
 
 	@Override
 	public AttributeInstance getAttribute(Attribute arg0) {
-		throw Pokkit.unsupported();
-
+		return getAttribute(arg0);
 	}
 
 	@Override
