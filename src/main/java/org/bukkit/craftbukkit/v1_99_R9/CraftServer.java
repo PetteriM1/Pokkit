@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import cn.nukkit.permission.BanEntry;
+
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 
 import nl.rutgerkok.pokkit.*;
@@ -74,6 +76,8 @@ import nl.rutgerkok.pokkit.player.PokkitPlayer;
 import nl.rutgerkok.pokkit.plugin.PokkitPluginManager;
 import nl.rutgerkok.pokkit.scheduler.PokkitScheduler;
 import nl.rutgerkok.pokkit.scoreboard.PokkitScoreboardManager;
+import nl.rutgerkok.pokkit.tag.PokkitBlockTag;
+import nl.rutgerkok.pokkit.tag.PokkitItemTag;
 import nl.rutgerkok.pokkit.world.PokkitWorld;
 import nl.rutgerkok.pokkit.world.PokkitWorldType;
 
@@ -607,12 +611,24 @@ public final class CraftServer extends Server.Spigot implements Server {
 
 	@Override
 	public <T extends Keyed> Tag<T> getTag(String registry, NamespacedKey tag, Class<T> clazz) {
-		throw Pokkit.unsupported();
+
+        switch (registry) {
+            case org.bukkit.Tag.REGISTRY_BLOCKS:
+                Preconditions.checkArgument(clazz == org.bukkit.Material.class, "Block namespace must have material type");
+
+                return (org.bukkit.Tag<T>) new PokkitBlockTag(tag);
+            case org.bukkit.Tag.REGISTRY_ITEMS:
+                Preconditions.checkArgument(clazz == org.bukkit.Material.class, "Item namespace must have material type");
+
+                return (org.bukkit.Tag<T>) new PokkitItemTag(tag);
+            default:
+                throw new IllegalArgumentException();
+        }
 	}
 
 	@Override
-	public <T extends Keyed> Iterable<Tag<T>> getTags(String s, Class<T> aClass) {
-		throw Pokkit.unsupported();
+	public <T extends Keyed> Iterable<Tag<T>> getTags(String registry, Class<T> clazz) {
+    	throw Pokkit.unsupported();
 	}
 
 	@Override
